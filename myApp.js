@@ -26,7 +26,7 @@ const createAndSavePerson = (done) => {
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
-  const manyPeople = Person.create([
+  const arrayOfPeople = [
     { name:'Jim',
       age:34, 
       favoriteFoods: 'more stuff'
@@ -39,10 +39,10 @@ const createManyPeople = (arrayOfPeople, done) => {
       age:24, 
       favoriteFoods: 'little stuff'
     }
-  ])
-  manyPeople.save((error, data) => {
+  ]
+  arrayOfPeople.create((error, data) => {
     if(error) return done(error)
-    done(null, manyPeople)
+    done(null, data)
   })
 };
 
