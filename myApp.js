@@ -18,9 +18,11 @@ const createAndSavePerson = (done) => {
     age:'38',
     favoriteFoods:'stuff'
   })
-  JohnK.save()
-  if(error)return done(error)
-  done(null, result);
+  JohnK.save((error, data) => {
+    if(error) return done(error)
+    done(null, result);
+  })
+
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
