@@ -80,9 +80,11 @@ const findEditThenSave = (personId, done) => {
 
 const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
-  Person.findOneAndUpdate({name:personName},{age:ageToSet}, {new:true})
-  console.log(Person.findOne({name:personName}))
-  console.log(Person.findOne({age: ageToSet}))
+  Person.findOneAndUpdate({name:personName},{age:ageToSet}, {new:true}, (error, data)=>{
+    if(error) return done(error)
+    done(null, data)
+  })
+ 
 };
 
 const removeById = (personId, done) => {
