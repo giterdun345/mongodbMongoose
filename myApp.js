@@ -109,7 +109,8 @@ const queryChain = (done) => {
   limit(2).
   select({name:1, age:0, favoriteFoods:1}).
   exec((error, data)=>{
-    error ? done(error): done(null, data)
+    if(error) return done(error)
+    done(null, data)
   })
 };
 
